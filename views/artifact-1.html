@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Artifact 01: Portfolio Website | Andrew Narlock</title>
+    <meta name="description" content="Artifact 01 for TCSS 490: building and deploying this portfolio website with an AI assistant.">
+    <meta name="theme-color" content="#23376b">
+    <link rel="icon" href="../assets/img/ANDIconBlue.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/project.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="navigation">
+        <nav class="nav-container" aria-label="Main">
+            <a href="../index.html" class="header-logo">
+                <img src="../assets/img/ANDIconBlue.jpg" alt="" class="nav-icon" width="930" height="778">
+                <span class="header-text">Andrew Narlock Portfolio</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-bars" aria-hidden="true"></span>
+                <span class="visually-hidden">Menu</span>
+            </button>
+
+            <ul class="links" id="nav-links">
+                <li><a href="../index.html" class="nav-item">Home</a></li>
+                <li class="dropdown">
+                    <button class="nav-item dropdown-toggle" type="button" aria-expanded="false"
+                        aria-controls="projects-menu">Projects <span aria-hidden="true">&#9662;</span></button>
+                    <ul class="item-container" id="projects-menu">
+                        <!-- Add a link here each time an artifact is finished -->
+                        <li><a href="./artifact-1.html" class="item-text" aria-current="page">01 &middot; Portfolio
+                                Website</a></li>
+                        <li><a href="./artifact-2.html" class="item-text">02 &middot; Tower Defense</a></li>
+                        <li><a href="./artifact-5.html" class="item-text">05 &middot; Pebble Town</a></li>
+                        <li><a href="../index.html#projects" class="item-text">All projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="../index.html#contact" class="nav-item">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===================== PROJECT CONTENT ===================== -->
+    <main id="main" class="project">
+        <div class="project-title-wrap">
+            <p class="project-label">Artifact 01</p>
+            <h1 class="project-title">Portfolio Website</h1>
+            <p class="project-summary">A responsive, accessible portfolio that will hold every artifact I build in
+                TCSS 490 this quarter.</p>
+        </div>
+
+        <div class="project-content-container">
+
+            <section class="project-block" aria-labelledby="overview-head">
+                <div class="project-text">
+                    <h2 id="overview-head">Overview</h2>
+                    <p>The goal of this artifact was to build and deploy a small front-end portfolio site with the
+                        help of an AI assistant. The site is based on my earlier design portfolio: it keeps the same
+                        hero, project carousel, about and contact sections, with a cleaner layout and a single card
+                        for each of the five course artifacts.</p>
+
+                    <div class="project-links">
+                        <a class="project-link" href="https://andrewnarlock.github.io/Portfolio/">Visit the live site
+                            <span aria-hidden="true">&#8599;</span></a>
+                        <a class="project-link" href="https://github.com/AndrewNarlock/Portfolio">View the code on
+                            GitHub <span aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </div>
+                <img class="project-image" src="../assets/img/ANDLogoMedBlue.jpg"
+                    alt="The Andrew Narlock Portfolio logo, the letters A N D in navy on a blue background" width="1092"
+                    height="914">
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Designed by Andrew Narlock</p>
+    </footer>
+
+    <script src="../scripts/navigation.js" defer></script>
+</body>
+
+</html>

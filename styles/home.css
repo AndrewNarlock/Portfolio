@@ -1,0 +1,426 @@
+/* ==========================================================
+   Home page
+   ========================================================== */
+
+/* ---------- Hero ---------- */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background-color: var(--blue);
+    background-image:
+        linear-gradient(rgba(35, 55, 107, 0.5), #37679f),
+        url('../assets/img/ANDLogoBlueWide3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hero-text {
+    width: 100%;
+    padding: 0 35% 4rem 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    perspective: 1000px;
+}
+
+.hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease) 0.3s forwards;
+}
+
+.hero-title {
+    margin-top: 1rem;
+    font-size: clamp(2rem, 1.3rem + 3vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease) 0.6s forwards;
+}
+
+/* Soft "reflection" under the title, kept from the original design.
+   Decorative only, hidden from screen readers in the HTML. */
+.hero-title-shadow {
+    display: block;
+    font-size: clamp(2rem, 1.3rem + 3vw, 3.5rem);
+    font-weight: 300;
+    line-height: 0.2;
+    color: var(--navy);
+    transform: rotateX(70deg) translateY(-20px);
+    filter: blur(8px);
+    opacity: 0;
+    animation: fade-in-soft 0.8s var(--ease) 0.9s forwards;
+    user-select: none;
+    pointer-events: none;
+}
+
+.hero-p {
+    margin-top: 1.75rem;
+    max-width: 30rem;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+    font-weight: 300;
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease) 1.4s forwards;
+}
+
+.hero-btn {
+    margin-top: 2.25rem;
+    padding: 0.85rem 2rem;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius);
+    opacity: 0;
+    animation: fade-up 0.8s var(--ease) 2.1s forwards;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.hero-btn:hover {
+    background-color: var(--navy);
+    border-color: var(--navy);
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-soft {
+    to {
+        opacity: 0.8;
+    }
+}
+
+@media (max-width: 1100px) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(35, 55, 107, 0.6), #37679f),
+            url('../assets/img/ANDLogoMedBlue.jpg');
+    }
+
+    .hero-text {
+        padding: 0 1.5rem 4rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        background-image:
+            linear-gradient(rgba(35, 55, 107, 0.6), #37679f),
+            url('../assets/img/ANDLogoSmallBlue.jpg');
+    }
+
+    .hero-title-shadow {
+        display: none;
+    }
+}
+
+/* ---------- Projects + carousel ---------- */
+
+.projects {
+    padding: clamp(4rem, 8vw, 7rem) 0 clamp(4rem, 8vw, 7rem);
+    background: var(--mist);
+    scroll-margin-top: 1rem;
+}
+
+.carousel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+    gap: 1rem;
+    width: min(1200px, 92%);
+    margin: 3rem auto 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 3rem;
+    padding: 3.5rem 3rem;
+    list-style: none;
+    background-color: var(--charcoal);
+    box-shadow: inset 0 0 35px #000;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 3rem;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-btn {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: #fff;
+    background: var(--navy);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: var(--blue);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    min-height: 390px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+    scroll-snap-align: start;
+    transition: transform 0.25s var(--ease);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+.card-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background: var(--blue);
+}
+
+.card-img--placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+}
+
+.card-img--placeholder span {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.card-body {
+    flex: 1;
+    padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.card-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+}
+
+.card-title {
+    margin-top: 0.35rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+}
+
+.card-text {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.card-btn {
+    display: block;
+    margin: 0 1.25rem;
+    padding: 1rem 0 1.15rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    border-top: 1px solid var(--line);
+}
+
+a.card-btn span[aria-hidden] {
+    display: inline-block;
+    transition: transform 0.2s var(--ease);
+}
+
+a.card-btn:hover span[aria-hidden] {
+    transform: translateX(5px);
+}
+
+a.card-btn:hover {
+    color: var(--blue);
+}
+
+.card-btn.is-disabled {
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+/* Secondary links under a card's main button (live site, source repo).
+   The button above them tightens up so the card foot stays compact. */
+.card-btn--tight {
+    padding-bottom: 0.5rem;
+}
+
+.card-links {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0 1.25rem;
+    padding-bottom: 1.1rem;
+}
+
+.card-link {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+}
+
+.card-link:hover {
+    color: var(--navy);
+    text-decoration: underline;
+}
+
+.card--placeholder .card-title {
+    color: var(--ink-soft);
+}
+
+/* Narrow screens: arrows move below the carousel */
+@media (max-width: 600px) {
+    .carousel {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "track track"
+            "prev  next";
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .carousel-track {
+        grid-area: track;
+        gap: 1.5rem;
+        padding: 2.5rem 1.5rem;
+        scroll-padding-inline: 1.5rem;
+    }
+
+    .card {
+        flex-basis: min(260px, 78vw);
+        scroll-snap-align: center;
+    }
+
+    .prev {
+        grid-area: prev;
+    }
+
+    .next {
+        grid-area: next;
+    }
+
+    .carousel-btn {
+        height: 3rem;
+        font-size: 2rem;
+    }
+}
+
+/* ---------- About ---------- */
+
+.about {
+    padding: clamp(4rem, 8vw, 7rem) 1.5rem;
+    color: #fff;
+    background: var(--navy);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 6vw, 6rem);
+    max-width: 1100px;
+    margin: 3.5rem auto 0;
+}
+
+.about-image {
+    flex: 0 0 auto;
+    width: clamp(200px, 28vw, 380px);
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 6px 18px var(--navy-dark);
+}
+
+.about-text {
+    max-width: 36rem;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.85;
+}
+
+.about-text p+p {
+    margin-top: 1.25rem;
+}
+
+@media (max-width: 900px) {
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ---------- Contact ---------- */
+
+.contact {
+    padding: clamp(4rem, 7vw, 6rem) 1.5rem;
+}
+
+.contact-text {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+}
+
+.contact-text a {
+    font-weight: 600;
+    color: var(--navy);
+    text-underline-offset: 4px;
+    overflow-wrap: anywhere;
+}
+
+.contact-text a:hover {
+    color: var(--blue);
+}

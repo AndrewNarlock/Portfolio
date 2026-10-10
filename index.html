@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Andrew Narlock | TCSS 490 Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Andrew Narlock, showcasing the five artifacts built for TCSS 490 at the University of Washington Tacoma.">
+    <meta name="theme-color" content="#23376b">
+    <link rel="icon" href="assets/img/ANDIconBlue.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===================== HERO ===================== -->
+    <header class="hero">
+        <div class="hero-text">
+            <p class="hero-eyebrow">TCSS 490 &middot; Autumn 2026</p>
+            <h1 class="hero-title">Andrew Narlock Portfolio</h1>
+            <span class="hero-title-shadow" aria-hidden="true">Andrew Narlock Portfolio</span>
+            <p class="hero-p">A portfolio of the projects I build this quarter.</p>
+            <a href="#projects" class="hero-btn">View Projects</a>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- ===================== PROJECTS / ARTIFACTS ===================== -->
+        <section class="projects" id="projects" aria-labelledby="projects-head">
+            <h2 class="section-head" id="projects-head">Projects</h2>
+            <p class="section-sub">Five artifacts, one per project. Each card is filled in as the artifact is
+                completed.</p>
+
+            <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Project artifacts">
+                <button class="carousel-btn prev" type="button" aria-controls="carousel-track"
+                    aria-label="Previous projects" disabled>
+                    <span aria-hidden="true">&#8249;</span>
+                </button>
+
+                <!--
+                    HOW TO EDIT A CARD
+                    Each <li class="card"> below is one artifact. To fill in a placeholder:
+                      1. Remove the "card--placeholder" class from the <li>.
+                      2. Swap the .card-img placeholder <div> for an <img> (with alt text) if you have a screenshot.
+                      3. Update the title, reflection text and link.
+                      4. Replace the <span class="card-btn is-disabled"> with an <a class="card-btn" href="...">.
+                -->
+                <ul class="carousel-track" id="carousel-track" tabindex="0" aria-label="Project cards, scrollable">
+
+                    <!-- ===== ARTIFACT 1 ===== -->
+                    <li class="card">
+                        <img class="card-img" src="assets/img/ANDIconBlue.jpg" alt="" width="930" height="778">
+                        <div class="card-body">
+                            <p class="card-label">Artifact 01</p>
+                            <h3 class="card-title">Portfolio Website</h3>
+                            <p class="card-text">This site. A responsive, accessible portfolio built with HTML, CSS
+                                and JavaScript and developed alongside an AI assistant.</p>
+                        </div>
+                        <a href="views/artifact-1.html" class="card-btn card-btn--tight">View Project <span
+                                aria-hidden="true">&rarr;</span><span class="visually-hidden">: Portfolio
+                                Website</span></a>
+                        <div class="card-links">
+                            <a class="card-link" href="https://andrewnarlock.github.io/Portfolio/">Live Site <span
+                                    aria-hidden="true">&#8599;</span><span class="visually-hidden">: Portfolio
+                                    Website</span></a>
+                            <a class="card-link" href="https://github.com/AndrewNarlock/Portfolio">GitHub <span
+                                    aria-hidden="true">&#8599;</span><span class="visually-hidden">: Portfolio
+                                    Website source code</span></a>
+                        </div>
+                    </li>
+
+                    <!-- ===== ARTIFACT 2 ===== -->
+                    <li class="card">
+                        <img class="card-img" src="assets/img/tower-defense-card.jpg" alt="" width="1200"
+                            height="693">
+                        <div class="card-body">
+                            <p class="card-label">Artifact 02</p>
+                            <h3 class="card-title">Tower Defense</h3>
+                            <p class="card-text">A canvas game where waves of enemies walk a fixed path and you
+                                spend gold on towers to stop them before they reach your base.</p>
+                        </div>
+                        <a href="views/artifact-2.html" class="card-btn">View Project <span
+                                aria-hidden="true">&rarr;</span><span class="visually-hidden">: Tower
+                                Defense</span></a>
+                    </li>
+
+                    <!-- ===== ARTIFACT 3 (placeholder) ===== -->
+                    <li class="card card--placeholder">
+                        <div class="card-img card-img--placeholder" aria-hidden="true"><span>03</span></div>
+                        <div class="card-body">
+                            <p class="card-label">Artifact 03</p>
+                            <h3 class="card-title">Dev Log Writer</h3>
+                            <p class="card-text">A Claude Code command for this repo: a script gathers what changed,
+                                then the model writes the NOTES.md entry from those facts.</p>
+                        </div>
+                        <span class="card-btn is-disabled" aria-disabled="true">In progress</span>
+                    </li>
+
+                    <!-- ===== ARTIFACT 4 (placeholder) ===== -->
+                    <li class="card card--placeholder">
+                        <div class="card-img card-img--placeholder" aria-hidden="true"><span>04</span></div>
+                        <div class="card-body">
+                            <p class="card-label">Artifact 04</p>
+                            <h3 class="card-title">GPS Map App</h3>
+                            <p class="card-text">An app that shows your location and other users' locations on a map
+                                in real time.</p>
+                        </div>
+                        <span class="card-btn is-disabled" aria-disabled="true">In progress</span>
+                    </li>
+
+                    <!-- ===== ARTIFACT 5 ===== -->
+                    <li class="card">
+                        <img class="card-img" src="assets/img/pebble-town-card.jpg" alt="" width="1200"
+                            height="693">
+                        <div class="card-body">
+                            <p class="card-label">Artifact 05</p>
+                            <h3 class="card-title">Pebble Town</h3>
+                            <p class="card-text">A browser MMO: accounts, characters, five live worlds, and a
+                                walkable town where players chat, work and gamble together over WebSockets.</p>
+                        </div>
+                        <a href="views/artifact-5.html" class="card-btn">View Project <span
+                                aria-hidden="true">&rarr;</span><span class="visually-hidden">: Pebble
+                                Town</span></a>
+                    </li>
+                </ul>
+
+                <button class="carousel-btn next" type="button" aria-controls="carousel-track"
+                    aria-label="Next projects">
+                    <span aria-hidden="true">&#8250;</span>
+                </button>
+
+                <p class="carousel-status visually-hidden" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- ===================== ABOUT ===================== -->
+        <section class="about" id="about" aria-labelledby="about-head">
+            <h2 class="section-head section-head--light" id="about-head">About</h2>
+            <div class="about-content">
+                <img src="assets/img/ANDIconBlue.jpg" alt="Andrew Narlock Portfolio logo" class="about-image"
+                    width="930" height="778">
+                <div class="about-text">
+                    <p>My name is Andrew Narlock. I graduated from the University of Washington with a Bachelor's in
+                        Communications and completed The Web Developer Bootcamp, which gave me hands-on experience
+                        with full-stack development.</p>
+                    <p>My focus is user-centered design and web development. I want to keep growing in design and
+                        user experience research, and ultimately build software and games that people enjoy using.
+                        The projects above document what I build this quarter.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section class="contact" id="contact" aria-labelledby="contact-head">
+            <h2 class="section-head" id="contact-head">Contact</h2>
+            <p class="contact-text">For any questions, feel free to reach out at
+                <a href="mailto:narlocka@gmail.com">narlocka@gmail.com</a>.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Designed by Andrew Narlock</p>
+    </footer>
+
+    <script src="scripts/carousel.js" defer></script>
+</body>
+
+</html>
