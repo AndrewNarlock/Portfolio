@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Artifact 02: Infection | Andrew Narlock</title>
     <meta name="description"
-        content="Artifact 02 for TCSS 490: Infection, a real-time multiplayer tag game in the browser, rebuilt to run leaner and given leaderboards, new characters and host-chosen game lengths.">
+        content="Artifact 02 for TCSS 490: Infection, a real-time multiplayer tag game in the browser, with a short reflection on rebuilding it.">
     <meta name="theme-color" content="#23376b">
     <link rel="icon" href="../assets/img/ANDIconBlue.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,96 +62,28 @@
 
         <div class="project-content-container">
 
-            <figure class="project-preview">
-                <img src="../assets/img/infection-match.jpg"
-                    alt="A match in progress outside the casino: green infected players chase survivors in colored shirts across the street, and an infected player named zombie_kim says &quot;got you!&quot; next to a survivor"
-                    width="1200" height="800">
-            </figure>
-
-            <section class="project-block" aria-labelledby="overview-head">
+            <section class="project-block" aria-labelledby="reflection-head">
                 <div class="project-text">
-                    <h2 id="overview-head">Overview</h2>
-                    <p>Infection is a game I built before this class. It has accounts, friends, private messages,
-                        lobbies of up to 30 players and per-player stats. For this artifact I rebuilt it with three
-                        goals: run leaner on both the server and the browser, add leaderboards using what I am
-                        learning in my algorithms class, and add new characters and game options.</p>
-                    <p>The infected player moves faster than everyone else. The infected win if they catch every
-                        survivor before the timer ends; the survivors win if anyone is still uninfected.</p>
+                    <h2 id="reflection-head">Reflection</h2>
+                    <p>For this artifact I rebuilt Infection, a game I made before this class, over three sessions
+                        with an AI assistant. The first session replaced the colored circles with animated
+                        characters and made the game run leaner: I measured bandwidth before changing anything,
+                        and sending only what changed took an idle player from 6,454 bytes per second to zero.
+                        The second added leaderboards kept sorted in memory, using binary search from my
+                        algorithms class so a score change never re-sorts the list. The third let the lobby host
+                        choose the game length.</p>
+                    <p>The biggest lesson was to measure and test before trusting a change. The benchmark showed
+                        where the waste was, and building the leaderboards uncovered scoring bugs, like infected
+                        players never being able to win, that I would not have found otherwise.</p>
 
                     <div class="project-links">
                         <a class="project-link" href="https://github.com/AndrewNarlock/infection-game">View the code
                             on GitHub <span aria-hidden="true">&#8599;</span></a>
                     </div>
                 </div>
-            </section>
-
-            <section class="project-block" aria-labelledby="optimizations-head">
-                <div class="project-text">
-                    <h2 id="optimizations-head">Optimizations</h2>
-                    <p>I measured the original game with a benchmark script before changing anything. With three
-                        players, each one received 6,454 bytes per second even while everyone stood still, because
-                        every update (20 per second) re-sent every player's id, name, exact position and infected
-                        status.</p>
-                    <ul>
-                        <li><strong>Send only what changed.</strong> Names and infected status are sent once, when
-                            they change. Positions go out as a compact list of whole numbers with a short player
-                            number instead of a full id, and only when someone actually moved. Bandwidth dropped
-                            from 6,454 to <strong>0 bytes per second while idle</strong>, and from 8,228 to about
-                            1,000 while moving (87% less).</li>
-                        <li><strong>Draw only what is on screen.</strong> The 6000&times;4000 map is cut into tiles,
-                            and only visible tiles, buildings, trees and players are drawn. The old version kept a
-                            full copy of the map in memory, about 96 MB.</li>
-                        <li><strong>Do expensive work once.</strong> Building collision shapes and the scenery list
-                            are prepared once instead of on every check or frame, and the player sidebar is rebuilt
-                            only when someone joins, leaves or gets infected.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section class="project-block" aria-labelledby="leaderboards-head">
-                <div class="project-text">
-                    <h2 id="leaderboards-head">Leaderboards</h2>
-                    <p>There are leaderboards for survivor wins, infected wins and games played. The simple
-                        approach is to query the database and sort every player each time someone opens one,
-                        which is <code>O(n log n)</code> work per view. Instead, each leaderboard lives in memory
-                        and is only touched when a game ends.</p>
-                    <ul>
-                        <li><strong>A sorted array plus a hash map.</strong> The array keeps every player in order
-                            from best to worst, and the map finds any player's entry in constant time.</li>
-                        <li><strong>Binary search on updates.</strong> When a score changes, only that player
-                            moves: their entry is removed and re-inserted at the position binary search finds, so
-                            the list is never re-sorted.</li>
-                        <li><strong>Binary search for rank.</strong> A player's rank is one plus the number of
-                            players with a strictly higher score, found in <code>O(log n)</code>. Tied players share
-                            a rank and are listed alphabetically.</li>
-                        <li><strong>A cached top 50.</strong> Each board keeps its top 50 ready to send and rebuilds
-                            it only after something changes, so viewing a leaderboard never touches the database.
-                        </li>
-                    </ul>
-                    <p>Building this also uncovered bugs in how games were scored: infected players could never
-                        win, some games were never saved, and a player who disconnected during the countdown could
-                        still get a win. All three ways a game can end now go through one function that scores
-                        it.</p>
-                </div>
-            </section>
-
-            <section class="project-block" aria-labelledby="features-head">
-                <div class="project-text">
-                    <h2 id="features-head">New Features</h2>
-                    <ul>
-                        <li><strong>New characters.</strong> Players used to be colored circles. They are now
-                            animated characters with a walk cycle, each with their own shirt color and skin tone.
-                            Infected players turn green and glow.</li>
-                        <li><strong>A full town.</strong> The map, buildings and trees come from my MMO project,
-                            Pebble Town. Players can't walk through buildings, and trees fade when you stand
-                            behind them.</li>
-                        <li><strong>Game length options.</strong> The lobby host picks 30 seconds, 1 minute, 5
-                            minutes or 10 minutes. The server checks that the change comes from the host, before the
-                            game starts, and is one of the allowed lengths.</li>
-                    </ul>
-                    <p>An end-to-end test runs the real server with three connected players and plays full matches
-                        to check scoring, leaderboards, collision and game length.</p>
-                </div>
+                <img class="project-image" src="../assets/img/infection-match.jpg"
+                    alt="A match in progress outside the casino: green infected players chase survivors in colored shirts across the street, and an infected player says &quot;got you!&quot;"
+                    width="1200" height="800">
             </section>
         </div>
     </main>

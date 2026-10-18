@@ -189,3 +189,27 @@ used it. It is kept on purpose for artifact 5's page later.
 **Where the AI misread me / what I adjusted:**
 - It noticed the unused page and images but asked before deleting them, rather than
   deleting on its own.
+
+---
+
+## Entry 6 — 2026-10-18 — Shortening the artifact 2 page
+
+**Tool:** Claude
+
+**What I asked:**
+The artifact 2 page only needs what the assignment asks for: a link to what I built and a
+short reflection (a few sentences on how it went and what I learned). The four-section
+write-up from Entry 5 was too in-depth for the professor to go over quickly.
+
+**What changed:**
+- `views/artifact-2.html` is now a single Reflection block with the GitHub link and the
+  gameplay image beside it, the same layout as artifact 1. The Overview, Optimizations,
+  Leaderboards and New Features sections are gone.
+- The reflection is two short paragraphs: what each of the three sessions did, and the
+  main lesson (measure and test before trusting a change).
+- Removed CSS that no longer had any users: the list styles added in Entry 5
+  (`.project-text ul`, `li`, `ul+p`, `strong`) and `.project-preview`.
+
+**Where the AI misread me / what I adjusted:**
+- Its first version of the page (Entry 5) was a detailed write-up. That was more than the
+  assignment asks for, so I had it cut down to a short reflection.

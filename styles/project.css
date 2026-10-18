@@ -273,23 +273,6 @@
     margin-top: 1rem;
 }
 
-.project-text ul {
-    margin-top: 1rem;
-    padding-left: 1.25rem;
-}
-
-.project-text li+li {
-    margin-top: 0.6rem;
-}
-
-.project-text ul+p {
-    margin-top: 1rem;
-}
-
-.project-text strong {
-    font-weight: 600;
-}
-
 .project-text a {
     color: #fff;
     font-weight: 500;
@@ -328,18 +311,6 @@
 .project-image {
     flex: 0 1 420px;
     min-width: 0;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-md);
-}
-
-/* A full-width lead image above a project's text blocks. */
-.project-preview {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.project-preview img {
-    width: 100%;
     border-radius: var(--radius);
     box-shadow: var(--shadow-md);
 }
