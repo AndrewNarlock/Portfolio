@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Artifact 02: Tower Defense | Andrew Narlock</title>
+    <title>Artifact 02: Infection | Andrew Narlock</title>
     <meta name="description"
-        content="Artifact 02 for TCSS 490: a placeholder page for a browser tower defense game. A temporary idea, not built yet.">
+        content="Artifact 02 for TCSS 490: Infection, a real-time multiplayer tag game in the browser, rebuilt to run leaner and given leaderboards, new characters and host-chosen game lengths.">
     <meta name="theme-color" content="#23376b">
     <link rel="icon" href="../assets/img/ANDIconBlue.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,9 +41,8 @@
                     <ul class="item-container" id="projects-menu">
                         <!-- Add a link here each time an artifact is finished -->
                         <li><a href="./artifact-1.html" class="item-text">01 &middot; Portfolio Website</a></li>
-                        <li><a href="./artifact-2.html" class="item-text" aria-current="page">02 &middot; Tower
-                                Defense</a></li>
-                        <li><a href="./artifact-5.html" class="item-text">05 &middot; Pebble Town</a></li>
+                        <li><a href="./artifact-2.html" class="item-text" aria-current="page">02 &middot;
+                                Infection</a></li>
                         <li><a href="../index.html#projects" class="item-text">All projects</a></li>
                     </ul>
                 </li>
@@ -55,18 +54,105 @@
     <!-- ===================== PROJECT CONTENT ===================== -->
     <main id="main" class="project">
         <div class="project-title-wrap">
-            <p class="project-label">Artifact 02 &middot; Temporary Idea</p>
-            <h1 class="project-title">Tower Defense</h1>
+            <p class="project-label">Artifact 02</p>
+            <h1 class="project-title">Infection</h1>
+            <p class="project-summary">A real-time multiplayer tag game in the browser. One player starts out
+                infected, and every survivor they touch joins them.</p>
         </div>
 
         <div class="project-content-container">
-            <!-- Placeholder page: a preview of the idea only. Once the artifact is
-                 built, swap this figure for .project-block sections like artifact-1. -->
+
             <figure class="project-preview">
-                <img src="../assets/img/tower-defense-board.jpg"
-                    alt="The game board: a dirt path winding across a grass grid, red and blue enemies walking it with health bars above them, blue towers placed on the grass, and the yellow base at the end of the path"
-                    width="1200" height="900">
+                <img src="../assets/img/infection-match.jpg"
+                    alt="A match in progress outside the casino: green infected players chase survivors in colored shirts across the street, and an infected player named zombie_kim says &quot;got you!&quot; next to a survivor"
+                    width="1200" height="800">
             </figure>
+
+            <section class="project-block" aria-labelledby="overview-head">
+                <div class="project-text">
+                    <h2 id="overview-head">Overview</h2>
+                    <p>Infection is a game I built before this class. It has accounts, friends, private messages,
+                        lobbies of up to 30 players and per-player stats. For this artifact I rebuilt it with three
+                        goals: run leaner on both the server and the browser, add leaderboards using what I am
+                        learning in my algorithms class, and add new characters and game options.</p>
+                    <p>The infected player moves faster than everyone else. The infected win if they catch every
+                        survivor before the timer ends; the survivors win if anyone is still uninfected.</p>
+
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/AndrewNarlock/infection-game">View the code
+                            on GitHub <span aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="project-block" aria-labelledby="optimizations-head">
+                <div class="project-text">
+                    <h2 id="optimizations-head">Optimizations</h2>
+                    <p>I measured the original game with a benchmark script before changing anything. With three
+                        players, each one received 6,454 bytes per second even while everyone stood still, because
+                        every update (20 per second) re-sent every player's id, name, exact position and infected
+                        status.</p>
+                    <ul>
+                        <li><strong>Send only what changed.</strong> Names and infected status are sent once, when
+                            they change. Positions go out as a compact list of whole numbers with a short player
+                            number instead of a full id, and only when someone actually moved. Bandwidth dropped
+                            from 6,454 to <strong>0 bytes per second while idle</strong>, and from 8,228 to about
+                            1,000 while moving (87% less).</li>
+                        <li><strong>Draw only what is on screen.</strong> The 6000&times;4000 map is cut into tiles,
+                            and only visible tiles, buildings, trees and players are drawn. The old version kept a
+                            full copy of the map in memory, about 96 MB.</li>
+                        <li><strong>Do expensive work once.</strong> Building collision shapes and the scenery list
+                            are prepared once instead of on every check or frame, and the player sidebar is rebuilt
+                            only when someone joins, leaves or gets infected.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="project-block" aria-labelledby="leaderboards-head">
+                <div class="project-text">
+                    <h2 id="leaderboards-head">Leaderboards</h2>
+                    <p>There are leaderboards for survivor wins, infected wins and games played. The simple
+                        approach is to query the database and sort every player each time someone opens one,
+                        which is <code>O(n log n)</code> work per view. Instead, each leaderboard lives in memory
+                        and is only touched when a game ends.</p>
+                    <ul>
+                        <li><strong>A sorted array plus a hash map.</strong> The array keeps every player in order
+                            from best to worst, and the map finds any player's entry in constant time.</li>
+                        <li><strong>Binary search on updates.</strong> When a score changes, only that player
+                            moves: their entry is removed and re-inserted at the position binary search finds, so
+                            the list is never re-sorted.</li>
+                        <li><strong>Binary search for rank.</strong> A player's rank is one plus the number of
+                            players with a strictly higher score, found in <code>O(log n)</code>. Tied players share
+                            a rank and are listed alphabetically.</li>
+                        <li><strong>A cached top 50.</strong> Each board keeps its top 50 ready to send and rebuilds
+                            it only after something changes, so viewing a leaderboard never touches the database.
+                        </li>
+                    </ul>
+                    <p>Building this also uncovered bugs in how games were scored: infected players could never
+                        win, some games were never saved, and a player who disconnected during the countdown could
+                        still get a win. All three ways a game can end now go through one function that scores
+                        it.</p>
+                </div>
+            </section>
+
+            <section class="project-block" aria-labelledby="features-head">
+                <div class="project-text">
+                    <h2 id="features-head">New Features</h2>
+                    <ul>
+                        <li><strong>New characters.</strong> Players used to be colored circles. They are now
+                            animated characters with a walk cycle, each with their own shirt color and skin tone.
+                            Infected players turn green and glow.</li>
+                        <li><strong>A full town.</strong> The map, buildings and trees come from my MMO project,
+                            Pebble Town. Players can't walk through buildings, and trees fade when you stand
+                            behind them.</li>
+                        <li><strong>Game length options.</strong> The lobby host picks 30 seconds, 1 minute, 5
+                            minutes or 10 minutes. The server checks that the change comes from the host, before the
+                            game starts, and is one of the allowed lengths.</li>
+                    </ul>
+                    <p>An end-to-end test runs the real server with three connected players and plays full matches
+                        to check scoring, leaderboards, collision and game length.</p>
+                </div>
+            </section>
         </div>
     </main>
 

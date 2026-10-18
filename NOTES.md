@@ -137,3 +137,55 @@ that nothing uses — including the `.project-panel` rule left over from the ent
   pointed out that the AND logo and favicon still spell out the old name — worth deciding
   on separately.
 
+
+---
+
+## Entry 5 — 2026-10-18 — Artifact 2 becomes Infection; temporary artifacts unlinked
+
+**Tool:** Claude
+
+**What I asked:**
+Make artifact 2 feature my web game Infection
+([infection-game](https://github.com/AndrewNarlock/infection-game)), focusing on the
+new updates: optimizations, leaderboards built with what I've learned in my algorithms
+class, and features like new characters and game length options. My professor also said
+the temporary artifacts (3–5) should not link to a page yet.
+
+**What changed:**
+- `views/artifact-2.html` rewritten from the Tower Defense placeholder into a full
+  write-up: a gameplay image, then Overview, Optimizations, Leaderboards and New Features
+  blocks, with a GitHub link. All numbers and claims come from the game repo's README,
+  `LOG.md` and `game/leaderboard.js`.
+  - Optimizations: send-only-what-changed networking (6,454 → 0 bytes/sec idle, 87% less
+    while moving), drawing only on-screen map tiles and scenery, one-time setup work.
+  - Leaderboards: sorted array + hash map, binary search for re-insertion and for rank,
+    cached top 50, compared against a per-view `O(n log n)` database sort.
+  - Features: animated characters replacing colored circles, the Pebble Town map,
+    host-chosen game lengths (30 s / 1 / 5 / 10 min).
+- Card 02 on the home page is now Infection, with a new image, description and a GitHub
+  link under **View Project**.
+- Card 05 (Pebble Town) keeps its image and text, but its button is now the disabled
+  "In progress" label used by cards 03 and 04. No card or menu links to artifacts 3–5.
+- The Projects dropdown on artifacts 1 and 2 lists only 01 and 02.
+- Two new images, `infection-card.jpg` and `infection-match.jpg`, rendered in headless
+  Edge using the game's own `assets.js` and `avatar.js` with the renderer's draw order,
+  so the town, buildings and characters are what the game actually draws.
+- New list styles in `project.css` (`.project-text ul`, `li`, `strong`) for the bullet
+  lists in the write-up.
+
+**Cleanup (follow-up request):**
+After the changes above, three files were left with nothing pointing to them. I asked
+for them to be removed:
+- `views/artifact-5.html`, the Pebble Town placeholder page.
+- `assets/img/tower-defense-card.jpg` and `assets/img/tower-defense-board.jpg`.
+
+A search of every HTML, CSS and JS file confirmed nothing else referenced them before
+they were deleted. The `.project-preview` comment in `project.css` described placeholder
+pages; it now describes the rule's current use as a lead image on artifact 2.
+
+`assets/img/pebble-town-map.jpg` is also unreferenced now, since only the deleted page
+used it. It is kept on purpose for artifact 5's page later.
+
+**Where the AI misread me / what I adjusted:**
+- It noticed the unused page and images but asked before deleting them, rather than
+  deleting on its own.
