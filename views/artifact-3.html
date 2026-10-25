@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Artifact 03: Deadline Widget | Andrew Narlock</title>
+    <meta name="description"
+        content="Artifact 03 for TCSS 490: Deadline Widget, a Python desktop widget where Claude plans my day and filters my inbox, with a short reflection.">
+    <meta name="theme-color" content="#23376b">
+    <link rel="icon" href="../assets/img/ANDIconBlue.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/project.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="navigation">
+        <nav class="nav-container" aria-label="Main">
+            <a href="../index.html" class="header-logo">
+                <img src="../assets/img/ANDIconBlue.jpg" alt="" class="nav-icon" width="930" height="778">
+                <span class="header-text">Andrew Narlock Portfolio</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-bars" aria-hidden="true"></span>
+                <span class="visually-hidden">Menu</span>
+            </button>
+
+            <ul class="links" id="nav-links">
+                <li><a href="../index.html" class="nav-item">Home</a></li>
+                <li class="dropdown">
+                    <button class="nav-item dropdown-toggle" type="button" aria-expanded="false"
+                        aria-controls="projects-menu">Projects <span aria-hidden="true">&#9662;</span></button>
+                    <ul class="item-container" id="projects-menu">
+                        <!-- Add a link here each time an artifact is finished -->
+                        <li><a href="./artifact-1.html" class="item-text">01 &middot; Portfolio Website</a></li>
+                        <li><a href="./artifact-2.html" class="item-text">02 &middot; Infection</a></li>
+                        <li><a href="./artifact-3.html" class="item-text" aria-current="page">03 &middot;
+                                Deadline Widget</a></li>
+                        <li><a href="../index.html#projects" class="item-text">All projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="../index.html#contact" class="nav-item">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===================== PROJECT CONTENT ===================== -->
+    <main id="main" class="project">
+        <div class="project-title-wrap">
+            <p class="project-label">Artifact 03</p>
+            <h1 class="project-title">Deadline Widget</h1>
+            <p class="project-summary">A small desktop window that lists my Canvas due dates and readings, plans
+                what to work on today, and filters my Gmail inbox by a rule I type in plain words.</p>
+        </div>
+
+        <div class="project-content-container">
+
+            <section class="project-block" aria-labelledby="reflection-head">
+                <div class="project-text">
+                    <h2 id="reflection-head">Reflection</h2>
+                    <p>For "AI Inside It," Claude does real work every time the widget refreshes. A Python
+                        pipeline runs Claude Code headless (<code>claude -p</code>), so it needs no paid API key, and
+                        gives it three narrow jobs: pull tasks and due dates out of messy course pages, pick up to
+                        three things to do today, and choose the emails that fit my rule. Plain code fetches the
+                        data, runs Claude with no tools, and checks every answer before it is shown. Those checks
+                        caught real mistakes, like a plan that asked for 205 minutes when only 180 were available.
+                        The README spells out what the model does and what the code checks, and LOG.md records how
+                        the plan changed along the way. The biggest lesson was to keep the model's part small, so
+                        when something went wrong I could tell whether the model or my code was at fault.</p>
+
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/AndrewNarlock/deadline-widget">View the code
+                            on GitHub <span aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </div>
+                <img class="project-image" src="../assets/img/deadline-widget-calendar.png"
+                    alt="The Calendar page: a Today's Plan panel by Claude with three tasks and their minutes, filter checkboxes, and a list of upcoming assignments"
+                    width="436" height="640">
+            </section>
+
+            <section class="project-block" aria-labelledby="python-head">
+                <div class="project-text">
+                    <h2 id="python-head">Building in Python with Claude</h2>
+                    <p>I had barely used Python before this project, so Claude wrote most of the code while I made
+                        the design calls: what the model should do, what plain code should check, and how the
+                        window should behave. I learned the language by reading what it wrote, including virtual
+                        environments, Tkinter for the window and unittest for the tests. The hardest problems were
+                        not the language itself but my machine: Python was installed without Tkinter, and the
+                        desktop shortcut timed out on Gmail until we found that <code>pythonw</code> could not
+                        connect over IPv6. Working this way showed me that I can build something useful in an
+                        unfamiliar language, as long as I test each step and understand why it works.</p>
+                </div>
+                <img class="project-image" src="../assets/img/deadline-widget-email.png"
+                    alt="The Email page with the rule &quot;show only job hunting related emails&quot;, listing LinkedIn and Built In job alerts, each with a short reason from Claude"
+                    width="430" height="640">
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Designed by Andrew Narlock</p>
+    </footer>
+
+    <script src="../scripts/navigation.js" defer></script>
+</body>
+
+</html>

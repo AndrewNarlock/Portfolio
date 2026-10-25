@@ -213,3 +213,28 @@ write-up from Entry 5 was too in-depth for the professor to go over quickly.
 **Where the AI misread me / what I adjusted:**
 - Its first version of the page (Entry 5) was a detailed write-up. That was more than the
   assignment asks for, so I had it cut down to a short reflection.
+
+---
+
+## Entry 7 — 2026-10-25 — Artifact 3 page: Deadline Widget
+
+**Tool:** Claude
+
+**What I asked:**
+Add my Deadline Widget (a Python app built with Claude) as Artifact 3. First make sure the
+local code matches GitHub. Keep the page concise: about one paragraph on how it meets the
+Artifact 3 assignment, plus a section on using Claude to build an app in Python, a language
+I had barely used. Use my two PNG screenshots.
+
+**What changed:**
+- The local `deadline-widget` repo was one commit behind GitHub (a README update). The
+  working tree was clean, so it was fast-forwarded and now matches `origin/main`.
+- New `views/artifact-3.html`: a Reflection block (how the model does real work every run,
+  what the code checks, the README and LOG.md) and a "Building in Python with Claude" block,
+  each with one screenshot beside it.
+- Screenshots renamed to `assets/img/deadline-widget-calendar.png` and
+  `deadline-widget-email.png` (lowercase, since GitHub Pages is case-sensitive). They stay PNGs.
+- The Artifact 3 card on the home page is filled in (it was the "Dev Log Writer" placeholder),
+  with links to the page and the GitHub repo. New `.card-img--top` rule in `home.css` crops the
+  tall screenshot from the top.
+- The Projects menu on artifact pages 1 and 2 now links to artifact 3.

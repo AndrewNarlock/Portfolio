@@ -221,6 +221,11 @@
     background: var(--blue);
 }
 
+/* Tall screenshots: crop from the top so the header stays in view. */
+.card-img--top {
+    object-position: top;
+}
+
 .card-img--placeholder {
     display: flex;
     align-items: center;
