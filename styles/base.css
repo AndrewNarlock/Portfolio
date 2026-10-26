@@ -3,24 +3,32 @@
    ========================================================== */
 
 :root {
-    /* Brand colors (carried over from the original portfolio) */
-    --navy: #23376b;
-    --navy-dark: #172449;
-    --blue: #37679f;
-    --charcoal: #292b2c;
+    /* Surfaces: near-black with a faint green cast */
+    --bg: #030504;
+    --surface: #0a130e;
+    --surface-hi: #0f1c15;
 
-    /* Neutrals */
-    --ink: #1c2230;
-    --ink-soft: #4a5468;
-    --paper: #ffffff;
-    --mist: #f4f6fa;
-    --line: #dde3ec;
+    /* Matrix greens */
+    --green: #00ff66;
+    --green-soft: #5cffa1;
+    --green-glow: rgba(0, 255, 102, 0.35);
+    --line: rgba(0, 255, 102, 0.14);
+    --line-strong: rgba(0, 255, 102, 0.4);
 
-    /* Focus ring: high-contrast on both light and dark backgrounds */
-    --focus: #ffbf47;
+    /* Text */
+    --white: #f1fff6;
+    --text: #cfdcd4;
+    --text-soft: #8ea398;
 
-    --radius: 6px;
-    --shadow-md: 0 10px 30px rgba(23, 36, 73, 0.18);
+    /* Focus ring: bright green reads clearly against the black background */
+    --focus: #00ff66;
+
+    --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+    --nav-h: 72px;
+    --radius: 10px;
+    --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.55);
     --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -33,17 +41,26 @@
 }
 
 html {
+    color-scheme: dark;
     scroll-behavior: smooth;
+    /* Keep anchored sections clear of the fixed nav bar */
+    scroll-padding-top: calc(var(--nav-h) + 1rem);
+    scrollbar-color: #1d4d31 var(--bg);
 }
 
 body {
     min-height: 100vh;
-    font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.6;
-    color: var(--ink);
-    background: var(--paper);
+    line-height: 1.65;
+    color: var(--text);
+    background: var(--bg);
     -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    color: #00140a;
+    background: var(--green);
 }
 
 img {
@@ -53,7 +70,7 @@ img {
 }
 
 a {
-    color: var(--blue);
+    color: var(--green);
 }
 
 /* ---------- Accessibility helpers ---------- */
@@ -64,9 +81,10 @@ a {
     left: 1rem;
     z-index: 100;
     padding: 0.75rem 1.25rem;
-    background: var(--focus);
-    color: var(--ink);
-    font-weight: 600;
+    background: var(--green);
+    color: #00140a;
+    font-family: var(--font-mono);
+    font-weight: 700;
     text-decoration: none;
     border-radius: 0 0 var(--radius) var(--radius);
     transform: translateY(-110%);
@@ -78,7 +96,7 @@ a {
 }
 
 :focus-visible {
-    outline: 3px solid var(--focus);
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
 }
 
@@ -94,51 +112,331 @@ a {
     border: 0;
 }
 
-/* ---------- Section headings ---------- */
+/* Blinking block cursor, used by the logo and the hero */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ---------- Navigation (fixed bar on every page) ---------- */
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(3, 5, 4, 0.72);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: min(1200px, 92%);
+    height: var(--nav-h);
+    margin: 0 auto;
+}
+
+/* Text logo styled as a terminal prompt: > andrew narlock_ */
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.logo-prompt {
+    font-weight: 700;
+    color: var(--green);
+}
+
+.logo-cursor {
+    width: 0.55em;
+    height: 1.1em;
+    margin-left: -0.3rem;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green-glow);
+    animation: blink 1.1s steps(1) infinite;
+}
+
+.logo:hover .logo-text {
+    color: var(--green);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+    list-style: none;
+}
+
+.nav-item {
+    display: block;
+    padding: 0.55rem 0.9rem;
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-decoration: none;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.nav-num {
+    margin-right: 0.4em;
+    color: var(--green);
+}
+
+.nav-item:hover,
+.dropdown-toggle[aria-expanded="true"] {
+    color: var(--green);
+    background: rgba(0, 255, 102, 0.07);
+}
+
+.nav-item--outline {
+    margin-left: 0.5rem;
+    color: var(--green);
+    border-color: var(--line-strong);
+}
+
+.nav-item--outline:hover {
+    background: rgba(0, 255, 102, 0.12);
+    border-color: var(--green);
+}
+
+.dropdown {
+    position: relative;
+}
+
+.item-container {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    min-width: 240px;
+    padding: 0.4rem 0;
+    list-style: none;
+    background: rgba(5, 10, 7, 0.97);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    display: none;
+}
+
+.dropdown-toggle[aria-expanded="true"]+.item-container {
+    display: block;
+}
+
+.item-text {
+    display: block;
+    padding: 0.65rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text);
+    text-decoration: none;
+}
+
+.item-text:hover,
+.item-text[aria-current="page"] {
+    color: var(--green);
+    background: rgba(0, 255, 102, 0.07);
+}
+
+/* Hamburger button (small screens only) */
+.menu-toggle {
+    display: none;
+    margin-left: auto;
+    width: 48px;
+    height: 44px;
+    background: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.menu-bars,
+.menu-bars::before,
+.menu-bars::after {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 0 auto;
+    background: var(--green);
+    position: relative;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.menu-bars::before,
+.menu-bars::after {
+    content: '';
+    position: absolute;
+    left: 0;
+}
+
+.menu-bars::before {
+    top: -7px;
+}
+
+.menu-bars::after {
+    top: 7px;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-bars {
+    background: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-bars::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-bars::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 800px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 0.5rem 0 1rem;
+        background: rgba(3, 5, 4, 0.97);
+        border-bottom: 1px solid var(--line);
+        box-shadow: var(--shadow-md);
+        display: none;
+    }
+
+    .links.is-open {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+        text-align: left;
+        padding: 0.85rem 4%;
+        border-radius: 0;
+    }
+
+    .nav-item--outline {
+        margin-left: 0;
+        border-color: transparent;
+    }
+
+    .item-container {
+        position: static;
+        background: rgba(0, 255, 102, 0.03);
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .item-text {
+        padding-left: calc(4% + 1rem);
+    }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border: 1px solid var(--green);
+    border-radius: 6px;
+    transition: background-color 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+.btn--primary {
+    color: #00140a;
+    background: var(--green);
+    box-shadow: 0 0 24px rgba(0, 255, 102, 0.3);
+}
+
+.btn--primary:hover {
+    background: var(--green-soft);
+    box-shadow: 0 0 38px rgba(0, 255, 102, 0.55);
+}
+
+.btn--ghost {
+    color: var(--green);
+    background: rgba(3, 5, 4, 0.55);
+}
+
+.btn--ghost:hover {
+    background: rgba(0, 255, 102, 0.12);
+    box-shadow: 0 0 24px rgba(0, 255, 102, 0.2);
+}
+
+/* ---------- Section headings: "01. Projects ————" ---------- */
 
 .section-head {
-    text-align: center;
-    font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.25rem);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--white);
+}
+
+.section-num {
+    font-family: var(--font-mono);
+    font-size: 0.55em;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--green);
 }
 
 .section-head::after {
     content: '';
-    display: block;
-    width: 48px;
-    height: 3px;
-    margin: 0.85rem auto 0;
-    background: var(--blue);
-    border-radius: 2px;
-}
-
-.section-head--light {
-    color: #fff;
-}
-
-.section-head--light::after {
-    background: #fff;
-    opacity: 0.6;
+    flex: 1;
+    max-width: 22rem;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line-strong), transparent);
 }
 
 .section-sub {
-    max-width: 38rem;
-    margin: 1.25rem auto 0;
-    padding: 0 1rem;
-    text-align: center;
-    color: var(--ink-soft);
+    max-width: 40rem;
+    margin-top: 1rem;
+    color: var(--text-soft);
 }
 
 /* ---------- Footer ---------- */
 
 .footer {
-    padding: 1.25rem 1rem;
+    padding: 2rem 1rem;
     text-align: center;
-    font-size: 0.875rem;
-    color: #fff;
-    background: var(--navy);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    background: var(--bg);
+    border-top: 1px solid var(--line);
 }
 
 /* ---------- Reduced motion ---------- */
@@ -153,6 +451,7 @@ a {
     *::after {
         animation-duration: 0.01ms !important;
         animation-delay: 0ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
 }

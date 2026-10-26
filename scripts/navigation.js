@@ -1,4 +1,4 @@
-// Navigation for project pages ------------------------------------------------
+// Site navigation ---------------------------------------------------------------
 // Accessible disclosure menus: buttons expose aria-expanded, Escape closes,
 // and clicking outside closes any open menu.
 
@@ -19,6 +19,16 @@
             setOpen(menuToggle, open);
             links.classList.toggle('is-open', open);
             if (!open) setOpen(dropdownToggle, false);
+        });
+    }
+
+    // Following a link inside the menu (such as an in-page #anchor) closes it
+    if (menuToggle && links) {
+        links.addEventListener('click', (e) => {
+            if (!e.target.closest('a')) return;
+            setOpen(menuToggle, false);
+            setOpen(dropdownToggle, false);
+            links.classList.remove('is-open');
         });
     }
 

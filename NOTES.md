@@ -238,3 +238,43 @@ I had barely used. Use my two PNG screenshots.
   with links to the page and the GitHub repo. New `.card-img--top` rule in `home.css` crops the
   tall screenshot from the top.
 - The Projects menu on artifact pages 1 and 2 now links to artifact 3.
+
+---
+
+## Entry 8 — 2026-10-26 — Redesign for job applications
+
+**Tool:** Claude
+
+**What I asked:**
+Make the site a general portfolio I can submit with job applications. Nothing in the header
+or hero should mention the class, but the five artifact cards can still reference it. Remove
+the AND logo images and replace the bland blue design with a dark/black one with green
+Matrix-style accents, plus a hero animation (3D if possible) that makes people say "wow".
+Keep the current version so I can go back to it.
+
+**What changed:**
+- Version safety first: this folder was not a git repo, so it was connected to the GitHub
+  `Portfolio` repo (its files already matched `main` exactly). The class version is saved on
+  a `class-version` branch, and the redesign was built on a `redesign` branch.
+- New hero: "Andrew Narlock" with a short tagline and no course references. Behind it,
+  `scripts/matrix-rain.js` draws 3D digital rain in WebGL: columns of glyphs at different
+  depths, a fly-in on load, a camera that turns toward the pointer, a light around the
+  pointer that reveals hidden glyphs, and a pulse on click. All per-glyph work runs in the
+  vertex shader. It pauses off-screen, draws one still frame with reduced motion, and falls
+  back to a CSS background without WebGL.
+- New `scripts/home.js`: the name decodes from random glyphs, an "I build ..." line types
+  out web apps / multiplayer games / AI-powered tools, sections slide in on scroll, and
+  cards tilt toward the pointer. Screen readers get the plain text.
+- New look on every page: near-black background, green accents, and Space Grotesk with
+  JetBrains Mono in place of Montserrat. A fixed nav bar with a text logo
+  (`> andrew narlock`) is shared by all pages, so its styles moved into `base.css`.
+- About: the round logo image became a terminal window that types out a recap of the text
+  beside it. Contact became a panel with Email and GitHub buttons.
+- The card 04 placeholder (GPS Map App) is now a map grid with a pulsing location ping.
+- The four `AND*.jpg` logos were deleted. Card 01 and the artifact 1 page now use
+  screenshots of the new hero (`portfolio-card.jpg`, `portfolio-preview.jpg`), and the
+  favicon is a new `assets/favicon.svg`.
+- The page title, description and link-preview (Open Graph) tags describe a web developer
+  portfolio instead of the course.
+- Checked in headless Edge at desktop and phone sizes and with reduced motion: no console
+  errors, no horizontal scrolling, and the phone menu closes after following a link.

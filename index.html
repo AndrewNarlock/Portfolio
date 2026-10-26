@@ -4,14 +4,25 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Andrew Narlock | TCSS 490 Portfolio</title>
+    <title>Andrew Narlock | Web Developer</title>
     <meta name="description"
-        content="Portfolio of Andrew Narlock, showcasing the five artifacts built for TCSS 490 at the University of Washington Tacoma.">
-    <meta name="theme-color" content="#23376b">
-    <link rel="icon" href="assets/img/ANDIconBlue.jpg">
+        content="Portfolio of Andrew Narlock, a web developer focused on user-centered design. Projects include real-time multiplayer games and a desktop app powered by Claude.">
+    <meta name="theme-color" content="#030504">
+
+    <!-- Link previews (LinkedIn, Slack, email) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Andrew Narlock | Web Developer">
+    <meta property="og:description"
+        content="Web developer focused on user-centered design. Multiplayer games, AI-powered tools and web apps.">
+    <meta property="og:url" content="https://andrewnarlock.github.io/Portfolio/">
+    <meta property="og:image" content="https://andrewnarlock.github.io/Portfolio/assets/img/portfolio-card.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/home.css">
@@ -20,26 +31,71 @@
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- ===================== HERO ===================== -->
-    <header class="hero">
-        <div class="hero-text">
-            <p class="hero-eyebrow">TCSS 490 &middot; Autumn 2026</p>
-            <h1 class="hero-title">Andrew Narlock Portfolio</h1>
-            <span class="hero-title-shadow" aria-hidden="true">Andrew Narlock Portfolio</span>
-            <p class="hero-p">A portfolio of the projects I build this quarter.</p>
-            <a href="#projects" class="hero-btn">View Projects</a>
-        </div>
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="site-nav">
+        <nav class="nav-container" aria-label="Main">
+            <a href="#top" class="logo" aria-label="Andrew Narlock, back to top">
+                <span class="logo-prompt" aria-hidden="true">&gt;</span>
+                <span class="logo-text">andrew narlock</span>
+                <span class="logo-cursor" aria-hidden="true"></span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-bars" aria-hidden="true"></span>
+                <span class="visually-hidden">Menu</span>
+            </button>
+
+            <ul class="links" id="nav-links">
+                <li><a href="#projects" class="nav-item"><span class="nav-num" aria-hidden="true">01.</span>Projects</a>
+                </li>
+                <li><a href="#about" class="nav-item"><span class="nav-num" aria-hidden="true">02.</span>About</a></li>
+                <li><a href="#contact" class="nav-item"><span class="nav-num" aria-hidden="true">03.</span>Contact</a>
+                </li>
+                <li><a href="https://github.com/AndrewNarlock" class="nav-item nav-item--outline">GitHub <span
+                            aria-hidden="true">&#8599;</span></a></li>
+            </ul>
+        </nav>
     </header>
 
     <main id="main">
 
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <!-- 3D digital rain, drawn by scripts/matrix-rain.js. Move the pointer over it, or click it. -->
+            <canvas class="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero-shade" aria-hidden="true"></div>
+
+            <div class="hero-content">
+                <p class="hero-prompt" aria-hidden="true"><span class="prompt-user">andrew@portfolio</span>:~$ <span
+                        class="hero-cmd">whoami</span></p>
+                <h1 class="hero-title" id="hero-title">Andrew Narlock</h1>
+                <p class="hero-role">
+                    <span class="visually-hidden">I build web apps, multiplayer games and AI-powered tools.</span>
+                    <span aria-hidden="true">I build <span class="hero-typed"
+                            data-words="web apps|multiplayer games|AI-powered tools">web apps</span><span
+                            class="caret"></span></span>
+                </p>
+                <p class="hero-p">Web developer with a background in communications and a focus on user-centered
+                    design.</p>
+                <div class="actions">
+                    <a href="#projects" class="btn btn--primary">View projects <span aria-hidden="true">&darr;</span></a>
+                    <a href="#contact" class="btn btn--ghost">Get in touch</a>
+                </div>
+            </div>
+
+            <a class="hero-scroll" href="#projects" aria-hidden="true" tabindex="-1">Scroll</a>
+        </section>
+
         <!-- ===================== PROJECTS / ARTIFACTS ===================== -->
         <section class="projects" id="projects" aria-labelledby="projects-head">
-            <h2 class="section-head" id="projects-head">Projects</h2>
-            <p class="section-sub">Five artifacts, one per project. Each card is filled in as the artifact is
-                completed.</p>
+            <div class="container reveal">
+                <h2 class="section-head" id="projects-head"><span class="section-num" aria-hidden="true">01.</span>
+                    Projects</h2>
+                <p class="section-sub">Games, tools and web apps I've built, from a real-time multiplayer game to a
+                    desktop app that puts Claude to work.</p>
+            </div>
 
-            <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Project artifacts">
+            <div class="carousel reveal" role="region" aria-roledescription="carousel" aria-label="Project artifacts">
                 <button class="carousel-btn prev" type="button" aria-controls="carousel-track"
                     aria-label="Previous projects" disabled>
                     <span aria-hidden="true">&#8249;</span>
@@ -57,7 +113,7 @@
 
                     <!-- ===== ARTIFACT 1 ===== -->
                     <li class="card">
-                        <img class="card-img" src="assets/img/ANDIconBlue.jpg" alt="" width="930" height="778">
+                        <img class="card-img" src="assets/img/portfolio-card.jpg" alt="" width="1200" height="693">
                         <div class="card-body">
                             <p class="card-label">Artifact 01</p>
                             <h3 class="card-title">Portfolio Website</h3>
@@ -120,7 +176,8 @@
 
                     <!-- ===== ARTIFACT 4 (placeholder) ===== -->
                     <li class="card card--placeholder">
-                        <div class="card-img card-img--placeholder" aria-hidden="true"><span>04</span></div>
+                        <div class="card-img card-img--placeholder" aria-hidden="true"><span
+                                class="placeholder-num">04</span><span class="map-ping"></span></div>
                         <div class="card-body">
                             <p class="card-label">Artifact 04</p>
                             <h3 class="card-title">GPS Map App</h3>
@@ -155,27 +212,68 @@
 
         <!-- ===================== ABOUT ===================== -->
         <section class="about" id="about" aria-labelledby="about-head">
-            <h2 class="section-head section-head--light" id="about-head">About</h2>
-            <div class="about-content">
-                <img src="assets/img/ANDIconBlue.jpg" alt="Andrew Narlock Portfolio logo" class="about-image"
-                    width="930" height="778">
-                <div class="about-text">
-                    <p>My name is Andrew Narlock. I graduated from the University of Washington with a Bachelor's in
-                        Communications and completed The Web Developer Bootcamp, which gave me hands-on experience
-                        with full-stack development.</p>
-                    <p>My focus is user-centered design and web development. I want to keep growing in design and
-                        user experience research, and ultimately build software and games that people enjoy using.
-                        The projects above document what I build this quarter.</p>
+            <div class="container">
+                <h2 class="section-head reveal" id="about-head"><span class="section-num" aria-hidden="true">02.</span>
+                    About</h2>
+                <div class="about-content">
+                    <div class="about-text reveal">
+                        <p>My name is Andrew Narlock. I graduated from the University of Washington with a
+                            Bachelor's in Communications and completed The Web Developer Bootcamp, which gave me
+                            hands-on experience with full-stack development.</p>
+                        <p>My focus is user-centered design and web development. I want to keep growing in design and
+                            user experience research, and ultimately build software and games that people enjoy
+                            using.</p>
+                    </div>
+
+                    <!-- Decorative recap of the text beside it, so it is hidden from screen readers.
+                         --d is when each line appears; --n is the length of each typed command. -->
+                    <div class="terminal reveal" aria-hidden="true">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-title">andrew@portfolio: ~</span>
+                        </div>
+                        <div class="terminal-body">
+                            <p class="t-line t-cmd-line" style="--d: 0.3s"><span class="t-prompt">$</span> <span
+                                    class="t-cmd" style="--n: 6">whoami</span></p>
+                            <p class="t-line" style="--d: 0.85s">Andrew Narlock</p>
+                            <p class="t-line t-cmd-line" style="--d: 1.15s"><span class="t-prompt">$</span> <span
+                                    class="t-cmd" style="--n: 17">cat education.txt</span></p>
+                            <p class="t-line t-out" style="--d: 2.3s">University of Washington, Bachelor's in
+                                Communications</p>
+                            <p class="t-line t-out" style="--d: 2.4s">The Web Developer Bootcamp</p>
+                            <p class="t-line t-cmd-line" style="--d: 2.7s"><span class="t-prompt">$</span> <span
+                                    class="t-cmd" style="--n: 13">cat focus.txt</span></p>
+                            <p class="t-line t-out" style="--d: 3.65s">user-centered design, web development</p>
+                            <p class="t-line t-cmd-line" style="--d: 3.95s"><span class="t-prompt">$</span> <span
+                                    class="t-cmd" style="--n: 12">ls projects/</span></p>
+                            <p class="t-line t-list" style="--d: 4.85s"><span>portfolio</span><span>infection</span><span>deadline-widget</span><span>gps-map-app</span><span>pebble-town</span>
+                            </p>
+                            <p class="t-line t-cmd-line" style="--d: 5.15s"><span class="t-prompt">$</span> <span
+                                    class="caret"></span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ===================== CONTACT ===================== -->
         <section class="contact" id="contact" aria-labelledby="contact-head">
-            <h2 class="section-head" id="contact-head">Contact</h2>
-            <p class="contact-text">For any questions, feel free to reach out at
-                <a href="mailto:narlocka@gmail.com">narlocka@gmail.com</a>.
-            </p>
+            <div class="container reveal">
+                <h2 class="section-head" id="contact-head"><span class="section-num" aria-hidden="true">03.</span>
+                    Contact</h2>
+                <div class="contact-panel">
+                    <p class="contact-title">Let's talk.</p>
+                    <p class="contact-text">Have a question about one of these projects, or a role you think I'd be a
+                        good fit for? Reach out at <a href="mailto:narlocka@gmail.com">narlocka@gmail.com</a>.</p>
+                    <div class="actions">
+                        <a href="mailto:narlocka@gmail.com" class="btn btn--primary">Email me</a>
+                        <a href="https://github.com/AndrewNarlock" class="btn btn--ghost">GitHub <span
+                                aria-hidden="true">&#8599;</span></a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -183,7 +281,10 @@
         <p>&copy; 2026 Designed by Andrew Narlock</p>
     </footer>
 
+    <script src="scripts/navigation.js" defer></script>
     <script src="scripts/carousel.js" defer></script>
+    <script src="scripts/matrix-rain.js" defer></script>
+    <script src="scripts/home.js" defer></script>
 </body>
 
 </html>
