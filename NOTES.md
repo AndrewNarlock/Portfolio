@@ -317,3 +317,14 @@ picked the project yet. Follow the format of the earlier artifact pages.
 **Where the AI misread me / what I adjusted:**
 - Nothing yet. The page only states what the group has actually done, so it does not
   describe a project or a contribution we have not chosen.
+
+**Follow-up: black git graph on the live site:**
+After pushing, the card 04 graph looked right locally, but on GitHub Pages its dots and lines
+were black. The live files were correct; my browser had loaded the new `index.html` with an
+old cached `home.css` (Pages lets browsers cache files for 10 minutes), and SVG shapes with no
+styles default to black. Two fixes:
+- The SVG shapes now carry their colors as `fill` / `stroke` attributes. `home.css` still
+  overrides them, but the graph stays green even if an old stylesheet loads. Checked by
+  rendering the graph with no CSS at all.
+- Every stylesheet link now ends in `?v=2`, so browsers fetch the new CSS. Raise the number
+  on all five pages whenever a stylesheet changes.

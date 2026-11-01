@@ -24,8 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/base.css?v=2">
+    <link rel="stylesheet" href="styles/home.css?v=2">
 </head>
 
 <body>
@@ -179,21 +179,30 @@
                         <div class="card-img card-img--placeholder" aria-hidden="true">
                             <span class="placeholder-num">04</span>
                             <!-- A git graph: the solid line is the upstream project, the dashed
-                                 branch is our planned work, and the ping marks where we are now -->
+                                 branch is our planned work, and the ping marks where we are now.
+                                 The fill/stroke attributes are a fallback; home.css overrides them,
+                                 but they keep the graph green if an old cached stylesheet loads. -->
                             <svg class="git-graph" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid meet">
-                                <path class="git-main" d="M16 112 H284" />
-                                <path class="git-branch" d="M96 112 C96 78 118 64 148 64 H198 C228 64 246 82 246 112" />
-                                <text class="git-label" x="16" y="134">main</text>
-                                <text class="git-label" x="173" y="50" text-anchor="middle">pull request</text>
-                                <circle class="git-commit" cx="46" cy="112" r="5" />
-                                <circle class="git-commit" cx="96" cy="112" r="5" />
-                                <circle class="git-commit" cx="146" cy="112" r="5" />
-                                <circle class="git-commit" cx="196" cy="112" r="5" />
-                                <circle class="git-commit git-commit--planned" cx="148" cy="64" r="5" />
-                                <circle class="git-commit git-commit--planned" cx="198" cy="64" r="5" />
-                                <circle class="git-commit git-commit--planned" cx="246" cy="112" r="5" />
-                                <circle class="git-ping" cx="96" cy="112" r="6" />
-                                <circle class="git-ping git-ping--late" cx="96" cy="112" r="6" />
+                                <path class="git-main" d="M16 112 H284" fill="none" stroke="#00ff66"
+                                    stroke-opacity="0.4" stroke-width="2" />
+                                <path class="git-branch" d="M96 112 C96 78 118 64 148 64 H198 C228 64 246 82 246 112"
+                                    fill="none" stroke="#00ff66" stroke-width="2" stroke-dasharray="5 6" />
+                                <text class="git-label" x="16" y="134" fill="#8ea398">main</text>
+                                <text class="git-label" x="173" y="50" text-anchor="middle" fill="#8ea398">pull
+                                    request</text>
+                                <circle class="git-commit" cx="46" cy="112" r="5" fill="#00ff66" />
+                                <circle class="git-commit" cx="96" cy="112" r="5" fill="#00ff66" />
+                                <circle class="git-commit" cx="146" cy="112" r="5" fill="#00ff66" />
+                                <circle class="git-commit" cx="196" cy="112" r="5" fill="#00ff66" />
+                                <circle class="git-commit git-commit--planned" cx="148" cy="64" r="5" fill="#06100a"
+                                    stroke="#00ff66" stroke-width="2" />
+                                <circle class="git-commit git-commit--planned" cx="198" cy="64" r="5" fill="#06100a"
+                                    stroke="#00ff66" stroke-width="2" />
+                                <circle class="git-commit git-commit--planned" cx="246" cy="112" r="5" fill="#06100a"
+                                    stroke="#00ff66" stroke-width="2" />
+                                <circle class="git-ping" cx="96" cy="112" r="6" fill="none" stroke="#00ff66" />
+                                <circle class="git-ping git-ping--late" cx="96" cy="112" r="6" fill="none"
+                                    stroke="#00ff66" />
                             </svg>
                         </div>
                         <div class="card-body">
