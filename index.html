@@ -174,17 +174,37 @@
                         </div>
                     </li>
 
-                    <!-- ===== ARTIFACT 4 (placeholder) ===== -->
+                    <!-- ===== ARTIFACT 4 (in progress: links to a progress update) ===== -->
                     <li class="card card--placeholder">
-                        <div class="card-img card-img--placeholder" aria-hidden="true"><span
-                                class="placeholder-num">04</span><span class="map-ping"></span></div>
+                        <div class="card-img card-img--placeholder" aria-hidden="true">
+                            <span class="placeholder-num">04</span>
+                            <!-- A git graph: the solid line is the upstream project, the dashed
+                                 branch is our planned work, and the ping marks where we are now -->
+                            <svg class="git-graph" viewBox="0 0 300 160" preserveAspectRatio="xMidYMid meet">
+                                <path class="git-main" d="M16 112 H284" />
+                                <path class="git-branch" d="M96 112 C96 78 118 64 148 64 H198 C228 64 246 82 246 112" />
+                                <text class="git-label" x="16" y="134">main</text>
+                                <text class="git-label" x="173" y="50" text-anchor="middle">pull request</text>
+                                <circle class="git-commit" cx="46" cy="112" r="5" />
+                                <circle class="git-commit" cx="96" cy="112" r="5" />
+                                <circle class="git-commit" cx="146" cy="112" r="5" />
+                                <circle class="git-commit" cx="196" cy="112" r="5" />
+                                <circle class="git-commit git-commit--planned" cx="148" cy="64" r="5" />
+                                <circle class="git-commit git-commit--planned" cx="198" cy="64" r="5" />
+                                <circle class="git-commit git-commit--planned" cx="246" cy="112" r="5" />
+                                <circle class="git-ping" cx="96" cy="112" r="6" />
+                                <circle class="git-ping git-ping--late" cx="96" cy="112" r="6" />
+                            </svg>
+                        </div>
                         <div class="card-body">
                             <p class="card-label">Artifact 04</p>
-                            <h3 class="card-title">GPS Map App</h3>
-                            <p class="card-text">An app that shows your location and other users' locations on a map
-                                in real time.</p>
+                            <h3 class="card-title">Open Source Contribution</h3>
+                            <p class="card-text">A group project in progress: three of us building something for an
+                                open source project on GitHub and submitting it as a pull request.</p>
                         </div>
-                        <span class="card-btn is-disabled" aria-disabled="true">In progress</span>
+                        <a href="views/artifact-4.html" class="card-btn card-btn--progress">View Progress <span
+                                aria-hidden="true">&rarr;</span><span class="visually-hidden">: Open Source
+                                Contribution</span></a>
                     </li>
 
                     <!-- ===== ARTIFACT 5 ===== -->
@@ -248,7 +268,7 @@
                             <p class="t-line t-out" style="--d: 3.65s">user-centered design, web development</p>
                             <p class="t-line t-cmd-line" style="--d: 3.95s"><span class="t-prompt">$</span> <span
                                     class="t-cmd" style="--n: 12">ls projects/</span></p>
-                            <p class="t-line t-list" style="--d: 4.85s"><span>portfolio</span><span>infection</span><span>deadline-widget</span><span>gps-map-app</span><span>pebble-town</span>
+                            <p class="t-line t-list" style="--d: 4.85s"><span>portfolio</span><span>infection</span><span>deadline-widget</span><span>open-source-pr</span><span>pebble-town</span>
                             </p>
                             <p class="t-line t-cmd-line" style="--d: 5.15s"><span class="t-prompt">$</span> <span
                                     class="caret"></span></p>

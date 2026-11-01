@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Artifact 04: Open Source Contribution | Andrew Narlock</title>
+    <meta name="description"
+        content="Artifact 04 for TCSS 490, in progress: a group of three building something for an open source project on GitHub and submitting it as a pull request.">
+    <meta name="theme-color" content="#030504">
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/project.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <header class="site-nav">
+        <nav class="nav-container" aria-label="Main">
+            <a href="../index.html" class="logo" aria-label="Andrew Narlock, home">
+                <span class="logo-prompt" aria-hidden="true">&gt;</span>
+                <span class="logo-text">andrew narlock</span>
+                <span class="logo-cursor" aria-hidden="true"></span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="menu-bars" aria-hidden="true"></span>
+                <span class="visually-hidden">Menu</span>
+            </button>
+
+            <ul class="links" id="nav-links">
+                <li><a href="../index.html" class="nav-item">Home</a></li>
+                <li class="dropdown">
+                    <button class="nav-item dropdown-toggle" type="button" aria-expanded="false"
+                        aria-controls="projects-menu">Projects <span aria-hidden="true">&#9662;</span></button>
+                    <ul class="item-container" id="projects-menu">
+                        <!-- Add a link here each time an artifact gets a page -->
+                        <li><a href="./artifact-1.html" class="item-text">01 &middot; Portfolio Website</a></li>
+                        <li><a href="./artifact-2.html" class="item-text">02 &middot; Infection</a></li>
+                        <li><a href="./artifact-3.html" class="item-text">03 &middot; Deadline Widget</a></li>
+                        <li><a href="./artifact-4.html" class="item-text" aria-current="page">04 &middot; Open
+                                Source Contribution</a></li>
+                        <li><a href="../index.html#projects" class="item-text">All projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="../index.html#contact" class="nav-item">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ===================== PROJECT CONTENT ===================== -->
+    <main id="main" class="project">
+        <div class="project-title-wrap">
+            <p class="project-label">Artifact 04 &middot; In progress</p>
+            <h1 class="project-title">Open Source Contribution</h1>
+            <p class="project-summary">A group project: the three of us will build something for an open source
+                project on GitHub and submit it as a pull request.</p>
+        </div>
+
+        <div class="project-content-container">
+
+            <!-- Progress update. Swap this block for a Reflection (and a link to the pull request)
+                 once the artifact is finished. -->
+            <section class="project-block" aria-labelledby="progress-head">
+                <div class="project-text">
+                    <h2 id="progress-head">Progress So Far</h2>
+                    <p>This artifact is a group project. So far, the three of us have formed our group and
+                        talked through a few different ideas. We decided to contribute to an open source project
+                        on GitHub: pick a project, build something for it, and submit our work as a pull request.
+                        We have not chosen the project yet, so that is our next step. A link to the pull request
+                        will go here once it is open.</p>
+
+                    <ul class="project-status" aria-label="Status">
+                        <li class="is-done"><span class="status-mark" aria-hidden="true">[x]</span><span
+                                class="visually-hidden">Done:</span> Form a group of three</li>
+                        <li class="is-done"><span class="status-mark" aria-hidden="true">[x]</span><span
+                                class="visually-hidden">Done:</span> Decide on an open source contribution</li>
+                        <li class="is-next"><span class="status-mark" aria-hidden="true">[&gt;]</span><span
+                                class="visually-hidden">Next:</span> Choose a project on GitHub</li>
+                        <li class="is-todo"><span class="status-mark" aria-hidden="true">[ ]</span><span
+                                class="visually-hidden">To do:</span> Build our contribution</li>
+                        <li class="is-todo"><span class="status-mark" aria-hidden="true">[ ]</span><span
+                                class="visually-hidden">To do:</span> Open a pull request</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Designed by Andrew Narlock</p>
+    </footer>
+
+    <script src="../scripts/navigation.js" defer></script>
+</body>
+
+</html>

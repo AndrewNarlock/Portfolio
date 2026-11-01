@@ -163,6 +163,47 @@
     box-shadow: 0 0 22px rgba(0, 255, 102, 0.2);
 }
 
+/* Checklist for an artifact still in progress: done, next and to-do steps.
+   The [x] / [>] / [ ] marks are visual only; screen readers hear "Done:" etc. */
+.project-status {
+    margin-top: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    list-style: none;
+}
+
+/* Flex keeps a wrapped step lined up with its text, not under the mark */
+.project-status li {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.project-status li+li {
+    margin-top: 0.55rem;
+}
+
+.status-mark {
+    flex: none;
+    white-space: pre;
+}
+
+.project-status .is-done .status-mark {
+    color: var(--green);
+}
+
+.project-status .is-next {
+    color: var(--white);
+}
+
+.project-status .is-next .status-mark {
+    color: #f5c542;
+}
+
+.project-status .is-todo {
+    color: var(--text-soft);
+}
+
 .project-image {
     flex: 0 1 420px;
     min-width: 0;

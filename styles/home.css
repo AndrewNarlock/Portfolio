@@ -401,7 +401,8 @@
     object-position: top;
 }
 
-/* Artifact 04 (a GPS map app): a map grid with a pulsing location ping */
+/* Artifact 04 (an open source pull request): a git graph on a grid, with a
+   dashed branch for the planned work and a ping where it will start */
 .card-img--placeholder {
     position: relative;
     background-color: #06100a;
@@ -422,30 +423,63 @@
     color: var(--text-soft);
 }
 
-.map-ping {
-    position: absolute;
-    top: 48%;
-    left: 58%;
-    width: 12px;
-    height: 12px;
-    margin: -6px 0 0 -6px;
-    background: var(--green);
-    border-radius: 50%;
-    box-shadow: 0 0 14px var(--green);
-}
-
-.map-ping::before,
-.map-ping::after {
-    content: '';
+.git-graph {
     position: absolute;
     inset: 0;
-    border: 1px solid var(--green);
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.git-main,
+.git-branch {
+    fill: none;
+    stroke-width: 2;
+}
+
+.git-main {
+    stroke: var(--line-strong);
+}
+
+.git-branch {
+    stroke: var(--green);
+    stroke-dasharray: 5 6;
+    opacity: 0.75;
+    animation: march 1.2s linear infinite;
+}
+
+.git-commit {
+    fill: var(--green);
+}
+
+.git-commit--planned {
+    fill: #06100a;
+    stroke: var(--green);
+    stroke-width: 2;
+}
+
+.git-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--text-soft);
+}
+
+.git-ping {
+    fill: none;
+    stroke: var(--green);
+    transform-box: fill-box;
+    transform-origin: center;
     animation: ping 2.4s ease-out infinite;
 }
 
-.map-ping::after {
+.git-ping--late {
     animation-delay: 1.2s;
+}
+
+@keyframes march {
+    to {
+        stroke-dashoffset: -11;
+    }
 }
 
 @keyframes ping {
@@ -521,8 +555,9 @@ a.card-btn:hover {
     color: var(--text-soft);
 }
 
-/* Pulsing status dot for work in progress */
-.card-btn.is-disabled::before {
+/* Pulsing status dot for work in progress (also on a link to a progress update) */
+.card-btn.is-disabled::before,
+.card-btn--progress::before {
     content: '';
     display: inline-block;
     width: 7px;

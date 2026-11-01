@@ -278,3 +278,42 @@ Keep the current version so I can go back to it.
   portfolio instead of the course.
 - Checked in headless Edge at desktop and phone sizes and with reduced motion: no console
   errors, no horizontal scrolling, and the phone menu closes after following a link.
+
+---
+
+## Entry 9 — 2026-11-01 — Artifact 4 progress page: Open Source Contribution
+
+**Tool:** Claude
+
+**What I asked:**
+Add a page for Artifact 4. It is not due yet, but the page needs a progress update. So far we
+have formed a group of three and talked through different ideas, and we decided to build
+something for an open source project on GitHub and submit it as a pull request. We have not
+picked the project yet. Follow the format of the earlier artifact pages.
+
+**What changed:**
+- New `views/artifact-4.html` on the same template as artifacts 2 and 3. The label reads
+  "Artifact 04 · In progress", and the page is one "Progress So Far" block: a short paragraph
+  on where the group is, then a checklist (done: form the group, decide on an open source
+  contribution; next: choose a project; to do: build it, open the pull request). There is no
+  screenshot or GitHub link yet, since nothing has been built. A comment marks the block to
+  swap for a Reflection and a pull request link once the artifact is finished.
+- New `.project-status` checklist styles in `project.css`. The `[x]` / `[>]` / `[ ]` marks
+  are visual only; screen readers hear "Done:", "Next:" and "To do:" instead.
+- Card 04 on the home page is now "Open Source Contribution" instead of the GPS Map App
+  placeholder. Its **View Progress** link opens the new page and keeps the yellow in-progress
+  dot (new `.card-btn--progress` class).
+- The card's map grid and location ping became a git graph drawn in inline SVG: a solid
+  `main` line, a dashed "pull request" branch with hollow (not yet made) commits, and a ping
+  where the branch will start. The unused `.map-ping` rules were removed; the `ping` keyframes
+  are reused.
+- The About terminal's `ls projects/` lists `open-source-pr` instead of `gps-map-app`.
+- The Projects menu on every artifact page now lists 04. Its comment now reads "each time an
+  artifact gets a page", since this one has a page before it is finished.
+- Checked in headless Edge at desktop width and at a true 390px phone width (the pages loaded
+  in a 390px iframe, since headless Edge will not shrink its window that far): no horizontal
+  scrolling, and all 59 local links and images across the five pages resolve.
+
+**Where the AI misread me / what I adjusted:**
+- Nothing yet. The page only states what the group has actually done, so it does not
+  describe a project or a contribution we have not chosen.
